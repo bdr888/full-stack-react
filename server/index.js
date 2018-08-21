@@ -1,9 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+require('./models/User'); //this needs to be before passport
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(encodeURI(keys.mongoURI), {
+  auth: {
+    user: 'Brian',
+    password: 'password1',
+  }
+});
 
 const app = express();
 require('./routes/authRoutes')(app);
