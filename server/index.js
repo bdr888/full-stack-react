@@ -6,8 +6,8 @@ require('./services/passport');
 
 mongoose.connect(encodeURI(keys.mongoURI), {
   auth: {
-    user: 'Brian',
-    password: 'password1',
+    user: keys.mongoUser,
+    password: keys.mongoPassword,
   }
 });
 
